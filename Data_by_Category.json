@@ -1,6 +1,6 @@
 [
   {
-    "Category":"Comedians Total",
+    "Category":"Comedians",
     "NumOfViewsInChannel":3598946012,
     "NumOfVideosInChannel":96929,
     "NumOfComments":17681171,
@@ -8,7 +8,7 @@
     "NumOfTotalVideoViewCount":37453604554
   },
   {
-    "Category":"Directors Total",
+    "Category":"Directors",
     "NumOfViewsInChannel":2503922909,
     "NumOfVideosInChannel":1100191,
     "NumOfComments":3397553,
@@ -16,7 +16,7 @@
     "NumOfTotalVideoViewCount":55394023492
   },
   {
-    "Category":"Gurus Total",
+    "Category":"Gurus",
     "NumOfViewsInChannel":1400520480,
     "NumOfVideosInChannel":305349,
     "NumOfComments":972032,
@@ -24,7 +24,7 @@
     "NumOfTotalVideoViewCount":20277364198
   },
   {
-    "Category":"Musicians Total",
+    "Category":"Musicians",
     "NumOfViewsInChannel":993982853,
     "NumOfVideosInChannel":80988,
     "NumOfComments":1472074,
@@ -32,15 +32,15 @@
     "NumOfTotalVideoViewCount":67136359213
   },
   {
-    "Category":"Partners Total",
+    "Category":"Partners",
     "NumOfViewsInChannel":4413575675,
     "NumOfVideosInChannel":1392926,
     "NumOfComments":6930167,
     "NumOfSubscriber":170166234,
-    "NumOfTotalVideoViewCount":1.00E+11
+    "NumOfTotalVideoViewCount":1.00044E+11
   },
   {
-    "Category":"Reporters Total",
+    "Category":"Reporters",
     "NumOfViewsInChannel":681975768,
     "NumOfVideosInChannel":939058,
     "NumOfComments":2064185,
@@ -48,11 +48,11 @@
     "NumOfTotalVideoViewCount":13613660618
   },
   {
-    "Category":"Sponsors Total",
+    "Category":"Sponsors",
     "NumOfViewsInChannel":4413575675,
     "NumOfVideosInChannel":1392926,
     "NumOfComments":6930167,
     "NumOfSubscriber":170166238,
-    "NumOfTotalVideoViewCount":1.00E+11
+    "NumOfTotalVideoViewCount":1.00044E+11
   }
 ]
