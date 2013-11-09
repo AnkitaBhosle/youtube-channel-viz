@@ -1,7 +1,7 @@
-[ // should have 10 countries
+[ 
 	{
 		"Country": "AR",
-		"Category": // should have 7 categories
+		"Category": 
 		[
 			{
 				"Name": "Comedians",
@@ -10,15 +10,18 @@
 			    "NumOfComments":149187,
 			    "NumOfSubscriber":3362126,
 			    "NumOfTotalVideoViewCount":596692762,
-			    "Channels": // should have 25 channels
+			    "Channels": 
 			    [
 			    	{
 			    		"ChannelID": "UCgoLYRcV3kbWjytvoOqY1CA",
 			    		"ChannelTitle": "Title of this Channel",
 			    		"ChannelSummary": "Some summary here..."
-			    	}
+			    	}, 
+			    	... // should have 25 channels
 			    ]
-		    }
+		    },
+		    ... // should have 7 categories
 		]
-	}
+	},
+	... // should have 10 countries
 ]
