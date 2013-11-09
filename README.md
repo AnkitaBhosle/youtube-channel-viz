@@ -7,7 +7,7 @@ youtube channel visualization
 JSON File Example and Descriptions:
 ============
  {
-    "Category":"Comedians",	<I>//The Category (User Type of Channel)</I> <br>
+    "Category":"Comedians",	//The Category (User Type of Channel) <br>
     "Country":"ar",	//Country Code <br>
     "ChannelID":"UC1_Hjfq-pKsSbFxsWiFdUqA",	//Channel ID <br>
     "ChannelTitle":"clickea aca, Te da cancer", //Channel Name <br>
