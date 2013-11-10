@@ -10,15 +10,15 @@ JSON File Example and Descriptions:
  [  
  
  	{  
-    	"Country":"ar",	//Country Code <br>	
+    	"Country":"ar",	//Country Code   
     	"Category": {  
-        	"Name": "Comedians"  //Category name <br>
-    		"NumOfViewsInChannel":31492, //Aggregate count <br>
-    		"NumOfVideosInChannel":84,	//Aggregate count <br>
-    		"NumOfComments":59,	//Aggregate count <br>
-    		"NumOfSubscriber":691,	//Aggregate count <br>
-    		"NumOfTotalVideoViewCount":7923771	//Aggregate count <br>
-    		"Channels": [   //Channel ID List <br>
+        	"Name": "Comedians"  //Category name   
+    		"NumOfViewsInChannel":31492, //Aggregate count   
+    		"NumOfVideosInChannel":84,	//Aggregate count   
+    		"NumOfComments":59,	//Aggregate count   
+    		"NumOfSubscriber":691,	//Aggregate count   
+    		"NumOfTotalVideoViewCount":7923771	//Aggregate count   
+    		"Channels": [   //Channel ID List   
     			"UC1_Hjfq-pKsSbFxsWiFdUqA",  
     			"UC-27_Szq7BtHDoC0R2U0zxA",   
     			"UC-716wgP94vhil91RVJwaIQ",   
@@ -27,10 +27,10 @@ JSON File Example and Descriptions:
     			"UC3bO1qGcFovPqFEa-mg4EyA",   
     			"UCCHcEUksSVKsRDH86j77Ntg"  
     		]  
-    	},
-    	// other six categories <br>    		
+    	 },
+    	// other six categories       		
     },  
-    // other nine countries <br>
+    // other nine countries   
 ]  
   
 
