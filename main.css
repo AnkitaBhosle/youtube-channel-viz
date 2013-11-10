@@ -17,7 +17,25 @@ body {
   display: none;
 }
 
-.legend line {
-  stroke: #000;
-  shape-rendering: crispEdges;
+div#filter {
+	float: left;
+	width: 200px;
+	font-size: 14px;
+}
+
+div#chart {
+	float: left;
+}
+
+.category {
+	cursor: pointer;
+}
+.category:hover {
+	opacity: 0.6;
+}
+.category.selected {
+	color: #666;
+}
+.category.unselected {
+	color: #ccc;
 }

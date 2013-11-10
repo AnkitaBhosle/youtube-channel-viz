@@ -36,7 +36,7 @@ var yAxis = d3.svg.axis()
 
 
 // Start drawing
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -65,7 +65,7 @@ var country = svg.selectAll(".country")
 var y0 = 0;
 data.forEach(function(d, i) {
   y0 = 0;
-  d.ages = color.domain().map(function(name, k) { 
+  d.categories = color.domain().map(function(name, k) { 
     return {
       name: name, 
       y0: y0, 
@@ -74,16 +74,14 @@ data.forEach(function(d, i) {
   });
   categoryTotal[i] = y0;
 
-  d.ages.forEach(function(d) { 
+  d.categories.forEach(function(d) { 
     d.y0 /= categoryTotal[i]; 
     d.y1 /= categoryTotal[i]; 
   });
 });
 
-// data.sort(function(a, b) { return b.ages[0].y1 - a.ages[0].y1; });
-
 var rect = country.selectAll("rect")
-    .data(function(d) { return d.ages; })
+    .data(function(d) { return d.categories; })
   .enter().append("rect")
     .attr("width", x.rangeBand())
     .attr("y", function(d) { return y(d.y1); })
@@ -92,36 +90,122 @@ var rect = country.selectAll("rect")
 
 
 // Add legend
-var legend = svg.select(".country:last-child").selectAll(".legend")
-    .data(function(d) { return d.ages; })
-  .enter().append("g")
-    .attr("class", "legend")
-    .attr("transform", function(d) { return "translate(" + x.rangeBand() / 2 + "," + y((d.y0 + d.y1) / 2) + ")"; });
+var legendGroup = svg.append("g")
+  .attr("transform", "translate(840,0)")
+  .attr("width", 50);
 
-legend.append("line")
-    .attr("x2", 10);
+var legend = legendGroup.selectAll(".legend")
+  .data(originalCategory)
+  .enter().append("rect")
+  .attr({
+    "class": "legend",
+    "x": 0,
+    "y": function(d,i) {
+      return 50 + i*30;
+    },
+    "width": 20,
+    "height": 20,
+    "rx": 2,
+    "ry": 2,
+    "fill": function(d,i) {
+      return color(d);
+    }
+  });
 
-legend.append("text")
-    .attr("x", 13)
-    .attr("dy", ".35em")
-    .text(function(d) { return d.name; });
+legendGroup.selectAll("text")
+  .data(originalCategory)
+  .enter().append("text")
+  .attr({
+    "x": 25,
+    "y": function(d,i) {
+      return 65 + i*30;
+    }
+  })
+  .text(function(d) { return d; });
 
 
 
 // Add button event listener
 
-$("#bkj0").click(function(){
-  selectedCategory = [1,1,1,1,1,1,1];
+// for (var c=0; c<originalCategory.length; c++) {
+//   // console.log($("li#"+originalCategory[c]));
+//   var cc = $("li#"+originalCategory[c]);
+//   console.log(cc);
+//   cc.click(function(){
+//     selectedCategory[c] = selectedCategory[c]==1 ? 0 : 1;
+//     filterChanged();
+//   });
+// }
+
+
+$("li#Comedians").click(function(){
+  if ($(this).hasClass("selected")) {
+    $(this).removeClass("selected").addClass("unselected");
+  }
+  else {
+    $(this).removeClass("unselected").addClass("selected");
+  }
+  selectedCategory[0] = selectedCategory[0]==1 ? 0 : 1;
   filterChanged();
 });
-
-$("#bkj2").click(function(){
-  selectedCategory = [1,0,1,1,1,1,1];
+$("li#Directors").click(function(){
+  if ($(this).hasClass("selected")) {
+    $(this).removeClass("selected").addClass("unselected");
+  }
+  else {
+    $(this).removeClass("unselected").addClass("selected");
+  }
+  selectedCategory[1] = selectedCategory[1]==1 ? 0 : 1;
   filterChanged();
 });
-
-$("#bkj5").click(function(){
-  selectedCategory = [1,1,1,1,0,1,1];
+$("li#Gurus").click(function(){
+  if ($(this).hasClass("selected")) {
+    $(this).removeClass("selected").addClass("unselected");
+  }
+  else {
+    $(this).removeClass("unselected").addClass("selected");
+  }
+  selectedCategory[2] = selectedCategory[2]==1 ? 0 : 1;
+  filterChanged();
+});
+$("li#Musicians").click(function(){
+  if ($(this).hasClass("selected")) {
+    $(this).removeClass("selected").addClass("unselected");
+  }
+  else {
+    $(this).removeClass("unselected").addClass("selected");
+  }
+  selectedCategory[3] = selectedCategory[3]==1 ? 0 : 1;
+  filterChanged();
+});
+$("li#Partners").click(function(){
+  if ($(this).hasClass("selected")) {
+    $(this).removeClass("selected").addClass("unselected");
+  }
+  else {
+    $(this).removeClass("unselected").addClass("selected");
+  }
+  selectedCategory[4] = selectedCategory[4]==1 ? 0 : 1;
+  filterChanged();
+});
+$("li#Reporters").click(function(){
+  if ($(this).hasClass("selected")) {
+    $(this).removeClass("selected").addClass("unselected");
+  }
+  else {
+    $(this).removeClass("unselected").addClass("selected");
+  }
+  selectedCategory[5] = selectedCategory[5]==1 ? 0 : 1;
+  filterChanged();
+});
+$("li#Sponsors").click(function(){
+  if ($(this).hasClass("selected")) {
+    $(this).removeClass("selected").addClass("unselected");
+  }
+  else {
+    $(this).removeClass("unselected").addClass("selected");
+  }
+  selectedCategory[6] = selectedCategory[6]==1 ? 0 : 1;
   filterChanged();
 });
 
@@ -132,7 +216,7 @@ function filterChanged() {
 
   data.forEach(function(d, i) {
     y0 = 0;
-    d.ages = color.domain().map(function(name, k) { 
+    d.categories = color.domain().map(function(name, k) { 
       
       if (selectedCategory[k]==1) {
         return {
@@ -150,16 +234,13 @@ function filterChanged() {
       }
     });
 
-    d.ages.forEach(function(d) { 
+    d.categories.forEach(function(d) { 
       d.y0 /= categoryTotal[i]; 
       d.y1 /= categoryTotal[i]; 
     });
   });
 
-
-  // data.sort(function(a, b) { return b.ages[0].y1 - a.ages[0].y1; });
-
-  rect.data(function(d) { return d.ages; })
+  rect.data(function(d) { return d.categories; })
     .enter().append("rect")
     .attr("width", x.rangeBand())
     .attr("y", function(d) { return y(d.y1); })
@@ -170,8 +251,5 @@ function filterChanged() {
     .duration(400)
     .attr("y", function(d) { return y(d.y1); })
     .attr("height", function(d) { return y(d.y0) - y(d.y1); });
-    // .style("fill", function(d) { return color(d.name); });
-
-  // rect.exit().remove();
 }
 
