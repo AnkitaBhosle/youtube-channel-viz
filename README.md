@@ -10,7 +10,7 @@ JSON File Example and Descriptions:
  [  
  
  	{  
-    	"Country":"ar",	//Country Code   
+    	"Country":"US",	//Country Code  (Upper case) 
     	"Category": {  
         	"Name": "Comedians"  //Category name   
     		"NumOfViewsInChannel":31492, //Aggregate count   
