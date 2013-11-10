@@ -6,19 +6,32 @@ youtube channel visualization
 
 JSON File Example and Descriptions:
 ============
- {
-    "Category":"Comedians",	//The Category (User Type of Channel) <br>
-    "Country":"ar",	//Country Code <br>
-    "ChannelID":"UC1_Hjfq-pKsSbFxsWiFdUqA",	//Channel ID <br>
-    "ChannelTitle":"clickea aca, Te da cancer", //Channel Name <br>
-    "ChannelSummary":"Su O.O", //Channel Description <br>
-    "NumOfViewsInChannel":31492,	//Total view counts of the channel itself <br>
-    "NumOfVideosInChannel":84,	//Total videos # in the channel <br>
-    "NumOfComments":59,	//Total comments # in the channel <br>
-    "NumOfSubscriber":691,	//Total subscriber # in the channel <br>
-    "NumOfTotalVideoViewCount":7923771	//Total view counts of all videos in the channel <br>
-  },
-  
+ 
+ [  
+ 
+ 	{  
+    	"Country":"ar",	//Country Code <br>	
+    	"Category": {  
+        	"Name": "Comedians"  //Category name <br>
+    		"NumOfViewsInChannel":31492, //Aggregate count <br>
+    		"NumOfVideosInChannel":84,	//Aggregate count <br>
+    		"NumOfComments":59,	//Aggregate count <br>
+    		"NumOfSubscriber":691,	//Aggregate count <br>
+    		"NumOfTotalVideoViewCount":7923771	//Aggregate count <br>
+    		"Channels": [   //Channel ID List <br>
+    			"UC1_Hjfq-pKsSbFxsWiFdUqA",  
+    			"UC-27_Szq7BtHDoC0R2U0zxA",   
+    			"UC-716wgP94vhil91RVJwaIQ",   
+    			"UC-lHJZR3Gqxm24_Vd_AJ5Yw",   
+    			"UC0v-tlzsn0QZwJnkiaUSJVQ",   
+    			"UC3bO1qGcFovPqFEa-mg4EyA",   
+    			"UCCHcEUksSVKsRDH86j77Ntg"  
+    		]  
+    	},
+    	// other six categories <br>    		
+    },  
+    // other nine countries <br>
+]  
   
 
 Country code:
