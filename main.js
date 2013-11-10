@@ -70,6 +70,8 @@ data.forEach(function(d, i) {
       name: name, 
       y0: y0, 
       y1: y0 += d.Category[k].NumOfTotalVideoViewCount,
+      rawNumber: d.Category[k].NumOfTotalVideoViewCount,
+      channels: d.Category[k].Channels
     }; 
   });
   categoryTotal[i] = y0;
@@ -86,7 +88,19 @@ var rect = country.selectAll("rect")
     .attr("width", x.rangeBand())
     .attr("y", function(d) { return y(d.y1); })
     .attr("height", function(d) { return y(d.y0) - y(d.y1); })
-    .style("fill", function(d) { return color(d.name); });
+    .style("fill", function(d) { return color(d.name); })
+    .on("mouseover", function(d,i) {
+      d3.select(this).style("opacity",0.8);
+      // TODO: display d.rawNumber in tooltip popup
+      console.log(d.rawNumber);
+    })
+    .on("mouseout", function(d,i) {
+      d3.select(this).style("opacity",1);
+    })
+    .on("click", function(d,i) {
+      // TODO: display the channels somewhere on the page (perhaps horizontally on the bottom?)
+      console.log(d.channels);
+    });
 
 
 // Add legend
@@ -137,6 +151,7 @@ legendGroup.selectAll("text")
 //   });
 // }
 
+// TODO: combine those stuff into one for loop
 
 $("li#Comedians").click(function(){
   if ($(this).hasClass("selected")) {
@@ -211,7 +226,6 @@ $("li#Sponsors").click(function(){
 
 
 // When filtering the category, redraw the rects and add transition
-
 function filterChanged() {
 
   data.forEach(function(d, i) {
