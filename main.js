@@ -6,8 +6,8 @@ var margin = {top: 20, right: 100, bottom: 30, left: 40},
 
 
 // Initial variables for storing categories
-var originalCategory = ["Comedians", "Musicans", "ABC", "DEF"];
-var selectedCategory = [1,1,1,1];
+var originalCategory = ["Comedians", "Directors", "Gurus", "Musicians", "Partners", "Reporters", "Sponsors"];
+var selectedCategory = [1,1,1,1,1,1,1];
 var categoryTotal = [];
 
 
@@ -22,7 +22,7 @@ var y = d3.scale.linear()
     .rangeRound([height, 0]);
 
 var color = d3.scale.ordinal()
-    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b"]) //TODO: choose meaningful colors
+    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]) //TODO: choose meaningful colors
     .domain(originalCategory);
 
 var xAxis = d3.svg.axis()
@@ -69,19 +69,18 @@ data.forEach(function(d, i) {
     return {
       name: name, 
       y0: y0, 
-      y1: y0 += +d.Category[k].NumOfTotalVideoViewCount,
+      y1: y0 += d.Category[k].NumOfTotalVideoViewCount,
     }; 
   });
   categoryTotal[i] = y0;
 
   d.ages.forEach(function(d) { 
-    console.log(d, categoryTotal[i]);
     d.y0 /= categoryTotal[i]; 
     d.y1 /= categoryTotal[i]; 
   });
 });
 
-data.sort(function(a, b) { return b.ages[0].y1 - a.ages[0].y1; });
+// data.sort(function(a, b) { return b.ages[0].y1 - a.ages[0].y1; });
 
 var rect = country.selectAll("rect")
     .data(function(d) { return d.ages; })
@@ -108,17 +107,33 @@ legend.append("text")
     .text(function(d) { return d.name; });
 
 
-// When filtering the category, redraw the rects and add transition
 
-$("#bkj").click(filterChanged);
+// Add button event listener
+
+$("#bkj0").click(function(){
+  selectedCategory = [1,1,1,1,1,1,1];
+  filterChanged();
+});
+
+$("#bkj2").click(function(){
+  selectedCategory = [1,0,1,1,1,1,1];
+  filterChanged();
+});
+
+$("#bkj5").click(function(){
+  selectedCategory = [1,1,1,1,0,1,1];
+  filterChanged();
+});
+
+
+// When filtering the category, redraw the rects and add transition
 
 function filterChanged() {
 
-  var selectedCategory = [1,0,1,1];
-
   data.forEach(function(d, i) {
     y0 = 0;
-    d.ages = selectedCategory.map(function(name, k) { 
+    d.ages = color.domain().map(function(name, k) { 
+      
       if (selectedCategory[k]==1) {
         return {
           name: name, 
@@ -133,18 +148,16 @@ function filterChanged() {
           y1: y0
         }
       }
-      
     });
 
     d.ages.forEach(function(d) { 
-      console.log(d, categoryTotal[i]);
       d.y0 /= categoryTotal[i]; 
       d.y1 /= categoryTotal[i]; 
     });
   });
 
 
-  data.sort(function(a, b) { return b.ages[0].y1 - a.ages[0].y1; });
+  // data.sort(function(a, b) { return b.ages[0].y1 - a.ages[0].y1; });
 
   rect.data(function(d) { return d.ages; })
     .enter().append("rect")
