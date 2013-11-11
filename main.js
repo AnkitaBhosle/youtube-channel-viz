@@ -9,6 +9,17 @@ var margin = {top: 20, right: 80, bottom: 30, left: 80},
 var originalCategory = ["Comedians", "Directors", "Gurus", "Musicians", "Partners", "Reporters", "Sponsors"];
 var selectedCategory = [1,1,1,1,1,1,1];
 var categoryTotal = [];
+var originalNumbergroup = ["NumOfTotalVideoViewCount", "NumOfViewsInChannel", "NumOfVideosInChannel", "NumOfComments", "NumOfSubscriber"];
+var selectedNumbergroup = "NumOfTotalVideoViewCount";
+/*
+NumOfTotalVideoViewCount
+NumOfViewsInChannel
+NumOfVideosInChannel
+NumOfComments
+NumOfSubscriber
+*/
+var numberFormat = d3.format(",.3");
+var numberFormat2 = d3.format(",.3s");
 
 
 // Initial variables for drawing svg
@@ -92,9 +103,9 @@ data.forEach(function(d, i) {
     return {
       name: name, 
       y0: y0, 
-      y1: y0 += d.Category[k].NumOfTotalVideoViewCount,
-      rawNumber: d.Category[k].NumOfTotalVideoViewCount,
-      channels: d.Category[k].Channels
+      y1: y0 += d.Category[k]["NumOfTotalVideoViewCount"],
+      rawNumber: d.Category[k]["NumOfTotalVideoViewCount"],
+      channels: d.Category[k]["Channels"]
     }; 
   });
   categoryTotal[i] = y0;
@@ -105,7 +116,9 @@ data.forEach(function(d, i) {
   });
 });
 
-// data.sort(function(a, b) { return (b.y1-b.y0) - (a.y1-a.y0); });
+// console.log("prev"+data);
+// data.sort(function(a, b) { console.log(a.categories.y0,b); return (b.y1-b.y0) - (a.y1-a.y0); });
+// console.log("after"+data);
 
 // Create tooltips for hover use
 var tooltip = d3.select("body").append("div") 
@@ -126,11 +139,9 @@ var rect = country.selectAll("rect")
       tooltip.transition()
         .duration(200)
         .style("opacity", 0.8);
-
-      tooltip.html(((d.y1-d.y0)*100).toFixed(2) + "%<br/>" + d.rawNumber)
+      tooltip.html(((d.y1-d.y0)*100).toFixed(2) + "%<br/>" + numberFormat(d.rawNumber) + "<br/>" + numberFormat2(d.rawNumber))
         .style("left", (d3.event.pageX)+"px")
         .style("top", (d3.event.pageY - 20)+"px")
-      console.log(d.y0, d.y1);
     })
     .on("mouseout", function(d,i) {
       d3.select(this).style("opacity",1);
@@ -146,13 +157,24 @@ var rect = country.selectAll("rect")
 
 // Add button event listener
 for (var c=0; c<originalCategory.length; c++) {
-  $("li#"+originalCategory[c]).click(setSelectedArray(c));
+  $("li#"+originalCategory[c]).click(setSelectedCategory(c));
+  $("li#"+originalNumbergroup[c]).click(setSelectedNumbergroup(c));
 }
 
-
-function setSelectedArray(para) {
+// NumOfTotalVideoViewCount
+// NumOfViewsInChannel
+// NumOfVideosInChannel
+// NumOfComments
+// NumOfSubscriber
+function setSelectedNumbergroup(para) {
   return function() {
-    console.log(this);
+    selectedNumbergroup = this.id;
+    numbergroupChanged(selectedNumbergroup);
+  };
+}
+
+function setSelectedCategory(para) {
+  return function() {
     if ($(this).hasClass("selected")) {
      $(this).removeClass("selected").addClass("unselected");
      $(this).children("span").removeClass("selected").addClass("unselected");
@@ -162,14 +184,40 @@ function setSelectedArray(para) {
       $(this).children("span").removeClass("unselected").addClass("selected");
     }
     selectedCategory[para] = selectedCategory[para]==1 ? 0 : 1;
-    filterChanged();
+    categoryChanged(selectedNumbergroup);
   };
 }
 
+function numbergroupChanged(ng) {
+  //console.log(ng);
+  // Needs to recalculate categoryTotal
+  data.forEach(function(d, i) {
+    y0 = 0;
+    d.categories = color.domain().map(function(name, k) { 
+      // console.log(ng);
+      return {
+        name: name, 
+        y0: y0, 
+        y1: y0 += d.Category[k][ng],
+        rawNumber: d.Category[k][ng],
+        channels: d.Category[k]["Channels"]
+      }; 
+    });
+    categoryTotal[i] = y0;
+
+    d.categories.forEach(function(d) { 
+      d.y0 /= categoryTotal[i]; 
+      d.y1 /= categoryTotal[i]; 
+    });
+  });
+
+  selectedCategory = [1,1,1,1,1,1,1];
+  categoryChanged(selectedNumbergroup);
+}
 
 // When filtering the category, redraw the rects and add transition
-function filterChanged() {
-
+function categoryChanged(ng) {
+  console.log(ng);
   data.forEach(function(d, i) {
     y0 = 0;
     d.categories = color.domain().map(function(name, k) { 
@@ -178,9 +226,9 @@ function filterChanged() {
         return {
           name: name, 
           y0: y0, 
-          y1: y0 += +d.Category[k].NumOfTotalVideoViewCount,
-          rawNumber: d.Category[k].NumOfTotalVideoViewCount,
-        channels: d.Category[k].Channels
+          y1: y0 += d.Category[k][ng],
+          rawNumber: d.Category[k][ng],
+          channels: d.Category[k]["Channels"]
         }; 
       }
       else {
@@ -188,8 +236,8 @@ function filterChanged() {
           name: name, 
           y0: y0, 
           y1: y0,
-          rawNumber: d.Category[k].NumOfTotalVideoViewCount,
-          channels: d.Category[k].Channels
+          rawNumber: d.Category[k][ng],
+          channels: d.Category[k]["Channels"]
         }
       }
     });
