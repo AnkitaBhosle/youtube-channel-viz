@@ -11,13 +11,6 @@ var selectedCategory = [1,1,1,1,1,1,1];
 var categoryTotal = [];
 var originalNumbergroup = ["NumOfTotalVideoViewCount", "NumOfViewsInChannel", "NumOfVideosInChannel", "NumOfComments", "NumOfSubscriber"];
 var selectedNumbergroup = "NumOfTotalVideoViewCount";
-/*
-NumOfTotalVideoViewCount
-NumOfViewsInChannel
-NumOfVideosInChannel
-NumOfComments
-NumOfSubscriber
-*/
 var numberFormat = d3.format(",.3");
 var numberFormat2 = d3.format(",.3s");
 
@@ -161,11 +154,6 @@ for (var c=0; c<originalCategory.length; c++) {
   $("li#"+originalNumbergroup[c]).click(setSelectedNumbergroup(c));
 }
 
-// NumOfTotalVideoViewCount
-// NumOfViewsInChannel
-// NumOfVideosInChannel
-// NumOfComments
-// NumOfSubscriber
 function setSelectedNumbergroup(para) {
   return function() {
     selectedNumbergroup = this.id;
@@ -188,13 +176,15 @@ function setSelectedCategory(para) {
   };
 }
 
+
+// When choosing a different dataset to view, recalculate the total number for each category,
+// and redraw the rects and add transition
 function numbergroupChanged(ng) {
-  //console.log(ng);
+
   // Needs to recalculate categoryTotal
   data.forEach(function(d, i) {
     y0 = 0;
     d.categories = color.domain().map(function(name, k) { 
-      // console.log(ng);
       return {
         name: name, 
         y0: y0, 
@@ -211,9 +201,9 @@ function numbergroupChanged(ng) {
     });
   });
 
-  selectedCategory = [1,1,1,1,1,1,1];
   categoryChanged(selectedNumbergroup);
 }
+
 
 // When filtering the category, redraw the rects and add transition
 function categoryChanged(ng) {
