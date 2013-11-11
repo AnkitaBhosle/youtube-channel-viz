@@ -1,7 +1,7 @@
 body {
   font-size: 10px;
   font-family: "Roboto",  sans-serif;
-  background-color: #aaa;
+  background-color: #ccc;
 }
 
 h1 {
@@ -21,7 +21,7 @@ h1 {
 }
 
 svg {
-	background-color: #ddd;
+	background-color: #fff;
 	border-radius: 2px;
 }
 
@@ -59,6 +59,7 @@ div#filter {
 div#chart {
 	float: left;
 }
+
 div#channel-container {
 	background-color: #fff;
 }
