@@ -25,6 +25,10 @@ svg {
 	border-radius: 2px;
 }
 
+svg rect:hover {
+	cursor: pointer;
+}
+
 /*.x.axis path {
   display: none;
   stroke: #444;
