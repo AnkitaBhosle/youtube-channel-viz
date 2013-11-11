@@ -42,7 +42,6 @@ var svg = d3.select("#chart").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
 svg.append("g")
     .attr("class", "x axis")
     .attr("transform", "translate(0," + height + ")")
@@ -106,6 +105,13 @@ data.forEach(function(d, i) {
   });
 });
 
+// data.sort(function(a, b) { return (b.y1-b.y0) - (a.y1-a.y0); });
+
+// Create tooltips for hover use
+var tooltip = d3.select("body").append("div") 
+    .attr("class", "tooltip")       
+    .style("opacity", 0);
+
 var rect = country.selectAll("rect")
     .data(function(d) { return d.categories; })
   .enter().append("rect")
@@ -115,52 +121,27 @@ var rect = country.selectAll("rect")
     .style("fill", function(d) { return color(d.name); })
     .on("mouseover", function(d,i) {
       d3.select(this).style("opacity",0.8);
-      // TODO: display d.rawNumber in tooltip popup
-      console.log(d.rawNumber);
+
+      // Display d.rawNumber in tooltip popup
+      tooltip.transition()
+        .duration(200)
+        .style("opacity", 0.8);
+
+      tooltip.html(((d.y1-d.y0)*100).toFixed(2) + "%<br/>" + d.rawNumber)
+        .style("left", (d3.event.pageX)+"px")
+        .style("top", (d3.event.pageY - 20)+"px")
+      console.log(d.y0, d.y1);
     })
     .on("mouseout", function(d,i) {
       d3.select(this).style("opacity",1);
+      tooltip.transition()
+        .duration(200)
+        .style("opacity", 0);
     })
     .on("click", function(d,i) {
       // TODO: display the channels somewhere on the page (perhaps horizontally on the bottom?)
       console.log(d.channels);
     });
-
-
-// Add legend
-// var legendGroup = svg.append("g")
-//   .attr("transform", "translate(840,0)")
-//   .attr("width", 50);
-
-// var legend = legendGroup.selectAll(".legend")
-//   .data(originalCategory)
-//   .enter().append("rect")
-//   .attr({
-//     "class": "legend",
-//     "x": 0,
-//     "y": function(d,i) {
-//       return 50 + i*30;
-//     },
-//     "width": 20,
-//     "height": 20,
-//     "rx": 2,
-//     "ry": 2,
-//     "fill": function(d,i) {
-//       return color(d);
-//     }
-//   });
-
-// legendGroup.selectAll("text")
-//   .data(originalCategory)
-//   .enter().append("text")
-//   .attr({
-//     "x": 25,
-//     "y": function(d,i) {
-//       return 65 + i*30;
-//     }
-//   })
-//   .text(function(d) { return d; });
-
 
 
 // Add button event listener
@@ -198,13 +179,17 @@ function filterChanged() {
           name: name, 
           y0: y0, 
           y1: y0 += +d.Category[k].NumOfTotalVideoViewCount,
+          rawNumber: d.Category[k].NumOfTotalVideoViewCount,
+        channels: d.Category[k].Channels
         }; 
       }
       else {
         return {
           name: name, 
           y0: y0, 
-          y1: y0
+          y1: y0,
+          rawNumber: d.Category[k].NumOfTotalVideoViewCount,
+          channels: d.Category[k].Channels
         }
       }
     });
