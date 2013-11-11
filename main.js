@@ -1,6 +1,6 @@
 
 // Set svg size and margin
-var margin = {top: 20, right: 100, bottom: 30, left: 40},
+var margin = {top: 20, right: 80, bottom: 30, left: 80},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -51,6 +51,30 @@ svg.append("g")
 svg.append("g")
     .attr("class", "y axis")
     .call(yAxis);
+
+// Add axis text
+var legendGroup = svg.append("g")
+  .attr("transform", "translate(-60,250)")
+  .attr("width", 50);
+
+legendGroup.append("text")
+  .attr("transform", "rotate(-90)")
+  .attr({
+    "x": 10,
+    "y": 10,
+    "font-size": 14,
+    "fill": "#888"
+  })
+  .text("% of view");
+
+legendGroup.append("text")
+  .attr({
+    "x": 875,
+    "y": 210,
+    "font-size": 14,
+    "fill": "#888"
+  })
+  .text("country");
 
 
 // Add category rect for each country
@@ -104,125 +128,62 @@ var rect = country.selectAll("rect")
 
 
 // Add legend
-var legendGroup = svg.append("g")
-  .attr("transform", "translate(840,0)")
-  .attr("width", 50);
+// var legendGroup = svg.append("g")
+//   .attr("transform", "translate(840,0)")
+//   .attr("width", 50);
 
-var legend = legendGroup.selectAll(".legend")
-  .data(originalCategory)
-  .enter().append("rect")
-  .attr({
-    "class": "legend",
-    "x": 0,
-    "y": function(d,i) {
-      return 50 + i*30;
-    },
-    "width": 20,
-    "height": 20,
-    "rx": 2,
-    "ry": 2,
-    "fill": function(d,i) {
-      return color(d);
-    }
-  });
+// var legend = legendGroup.selectAll(".legend")
+//   .data(originalCategory)
+//   .enter().append("rect")
+//   .attr({
+//     "class": "legend",
+//     "x": 0,
+//     "y": function(d,i) {
+//       return 50 + i*30;
+//     },
+//     "width": 20,
+//     "height": 20,
+//     "rx": 2,
+//     "ry": 2,
+//     "fill": function(d,i) {
+//       return color(d);
+//     }
+//   });
 
-legendGroup.selectAll("text")
-  .data(originalCategory)
-  .enter().append("text")
-  .attr({
-    "x": 25,
-    "y": function(d,i) {
-      return 65 + i*30;
-    }
-  })
-  .text(function(d) { return d; });
+// legendGroup.selectAll("text")
+//   .data(originalCategory)
+//   .enter().append("text")
+//   .attr({
+//     "x": 25,
+//     "y": function(d,i) {
+//       return 65 + i*30;
+//     }
+//   })
+//   .text(function(d) { return d; });
 
 
 
 // Add button event listener
+for (var c=0; c<originalCategory.length; c++) {
+  $("li#"+originalCategory[c]).click(setSelectedArray(c));
+}
 
-// for (var c=0; c<originalCategory.length; c++) {
-//   // console.log($("li#"+originalCategory[c]));
-//   var cc = $("li#"+originalCategory[c]);
-//   console.log(cc);
-//   cc.click(function(){
-//     selectedCategory[c] = selectedCategory[c]==1 ? 0 : 1;
-//     filterChanged();
-//   });
-// }
 
-// TODO: combine those stuff into one for loop
-
-$("li#Comedians").click(function(){
-  if ($(this).hasClass("selected")) {
-    $(this).removeClass("selected").addClass("unselected");
-  }
-  else {
-    $(this).removeClass("unselected").addClass("selected");
-  }
-  selectedCategory[0] = selectedCategory[0]==1 ? 0 : 1;
-  filterChanged();
-});
-$("li#Directors").click(function(){
-  if ($(this).hasClass("selected")) {
-    $(this).removeClass("selected").addClass("unselected");
-  }
-  else {
-    $(this).removeClass("unselected").addClass("selected");
-  }
-  selectedCategory[1] = selectedCategory[1]==1 ? 0 : 1;
-  filterChanged();
-});
-$("li#Gurus").click(function(){
-  if ($(this).hasClass("selected")) {
-    $(this).removeClass("selected").addClass("unselected");
-  }
-  else {
-    $(this).removeClass("unselected").addClass("selected");
-  }
-  selectedCategory[2] = selectedCategory[2]==1 ? 0 : 1;
-  filterChanged();
-});
-$("li#Musicians").click(function(){
-  if ($(this).hasClass("selected")) {
-    $(this).removeClass("selected").addClass("unselected");
-  }
-  else {
-    $(this).removeClass("unselected").addClass("selected");
-  }
-  selectedCategory[3] = selectedCategory[3]==1 ? 0 : 1;
-  filterChanged();
-});
-$("li#Partners").click(function(){
-  if ($(this).hasClass("selected")) {
-    $(this).removeClass("selected").addClass("unselected");
-  }
-  else {
-    $(this).removeClass("unselected").addClass("selected");
-  }
-  selectedCategory[4] = selectedCategory[4]==1 ? 0 : 1;
-  filterChanged();
-});
-$("li#Reporters").click(function(){
-  if ($(this).hasClass("selected")) {
-    $(this).removeClass("selected").addClass("unselected");
-  }
-  else {
-    $(this).removeClass("unselected").addClass("selected");
-  }
-  selectedCategory[5] = selectedCategory[5]==1 ? 0 : 1;
-  filterChanged();
-});
-$("li#Sponsors").click(function(){
-  if ($(this).hasClass("selected")) {
-    $(this).removeClass("selected").addClass("unselected");
-  }
-  else {
-    $(this).removeClass("unselected").addClass("selected");
-  }
-  selectedCategory[6] = selectedCategory[6]==1 ? 0 : 1;
-  filterChanged();
-});
+function setSelectedArray(para) {
+  return function() {
+    console.log(this);
+    if ($(this).hasClass("selected")) {
+     $(this).removeClass("selected").addClass("unselected");
+     $(this).children("span").removeClass("selected").addClass("unselected");
+    }
+    else {
+      $(this).removeClass("unselected").addClass("selected");
+      $(this).children("span").removeClass("unselected").addClass("selected");
+    }
+    selectedCategory[para] = selectedCategory[para]==1 ? 0 : 1;
+    filterChanged();
+  };
+}
 
 
 // When filtering the category, redraw the rects and add transition
