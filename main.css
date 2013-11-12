@@ -77,10 +77,11 @@ div#channel-inner-container {
 }
 div#channel-inner-container .thumbnail {
 	display: inline-block;
-	margin: 4px;
+	height: 270px;
+	margin: 5px;
 }
 div#channel-inner-container .thumbnail:hover {
-	background-color: #ccc;
+	background-color: #ddd;
 }
 
 /* Category list */
@@ -96,6 +97,13 @@ div#filter ul li {
 div#filter ul li:hover {
 	background-color: #ddd;
 	color: #000;
+}
+
+div#filter .wrapper-dropdown-3 ul li {
+	background-color: #fff;
+}
+div#filter .wrapper-dropdown-3 ul li:hover {
+	background-color: #ddd;
 }
 li span.bullet {
 	float: left;
