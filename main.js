@@ -68,7 +68,7 @@ legendGroup.append("text")
     "font-size": 14,
     "fill": "#888"
   })
-  .text("% of view");
+  .text("percentage");
 
 legendGroup.append("text")
   .attr({
