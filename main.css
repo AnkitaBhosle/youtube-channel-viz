@@ -58,7 +58,7 @@ div.tooltip {
 div#filter {
 	float: left;
 	width: 200px;
-	margin: 20px 60px 0px 30px;
+	margin: 20px 40px 0px 10px;
 }
 div#chart {
 	float: left;
@@ -67,8 +67,20 @@ div#chart {
 
 div#channel-container {
 	background-color: #eee;
-	width: 1250px;
+	width: 100%;
 	margin: 50px auto;
+	text-align: center;
+}
+div#channel-inner-container {
+	width: 98%;
+	margin: 0 auto;
+}
+div#channel-inner-container .thumbnail {
+	display: inline-block;
+	margin: 4px;
+}
+div#channel-inner-container .thumbnail:hover {
+	background-color: #ccc;
 }
 
 /* Category list */
