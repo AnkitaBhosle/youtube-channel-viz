@@ -29,6 +29,20 @@ div#team h2 {
 div#demo{
 	font-size:20px;
 	text-align: center;
+	text-decoration: none;
+	
+	background-color: #b3d587;
+	width: 200px;
+	padding: 20px;
+	margin: 0 auto;
+	margin-bottom: 60px;
+}
+div#demo a {
+	text-decoration: none;
+	color: #438b3b;
+}
+div#demo a:hover {
+	color: #839b42;
 }
 
 #flip,#flip2,#facts,#history {
@@ -43,6 +57,12 @@ div#demo{
 	display: none;
 	text-align:left;
 	padding-left: 40px;
+}
+#flip,#flip2 {
+	cursor: pointer;
+}
+#flip:hover,#flip2:hover {
+	background-color: #eff7dc;
 }
 
 /* Svg */
@@ -92,6 +112,11 @@ div#filter {
 div#chart {
 	float: left;
 	width:500px;
+}
+div#source {
+	text-align:center; 
+	color:#888; 
+	font-size:12px
 }
 
 div#channel-container {
