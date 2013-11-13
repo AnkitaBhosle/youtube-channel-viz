@@ -37,7 +37,7 @@
 .wrapper-dropdown-3 .dropdown {
   /* Size & position */
     position: absolute;
-    top: 140%;
+    /*top: 140%;*/
     left: 0;
     right: 0;
     padding: 0;
