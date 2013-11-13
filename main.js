@@ -6,8 +6,8 @@ var margin = {top: 20, right: 80, bottom: 80, left: 80},
 
 
 // Initial variables for storing categories
-var originalCategory = ["Comedians", "Directors", "Gurus", "Musicians", "Partners", "Reporters", "Sponsors"];
-var selectedCategory = [1,1,1,1,1,1,1];
+var originalCategory = ["Comedians", "Directors", "Gurus", "Musicians", "Reporters", "Sponsors"];
+var selectedCategory = [1,1,1,1,1,1];
 var categoryTotal = [];
 var originalNumbergroup = ["NumOfTotalVideoViewCount", "NumOfViewsInChannel", "NumOfVideosInChannel", "NumOfComments", "NumOfSubscriber"];
 var selectedNumbergroup = "NumOfTotalVideoViewCount";
@@ -32,8 +32,8 @@ var x = d3.scale.ordinal()
 var y = d3.scale.linear()
     .rangeRound([height, 0]);
 
-var color = d3.scale.ordinal()
-    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]) //TODO: choose meaningful colors
+var color = d3.scale.ordinal() //8a89a6
+    .range(["#98abc5", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]) //TODO: choose meaningful colors
     .domain(originalCategory);
 
 var xAxis = d3.svg.axis()

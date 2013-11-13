@@ -29,10 +29,6 @@ svg rect:hover {
 	cursor: pointer;
 }
 
-/*.x.axis path {
-  display: none;
-  stroke: #444;
-}*/
 
 /* Svg tooltip */
 div.tooltip {	
