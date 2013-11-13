@@ -54,6 +54,5 @@ Comedians <br>
 Directors <br>
 Gurus <br>
 Musicians <br>
-Partners  
-Reporters  
-Sponsors  
+Reporters <br>
+Sponsors<br>
