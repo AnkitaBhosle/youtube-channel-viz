@@ -11,6 +11,13 @@ var selectedCategory = [1,1,1,1,1,1,1];
 var categoryTotal = [];
 var originalNumbergroup = ["NumOfTotalVideoViewCount", "NumOfViewsInChannel", "NumOfVideosInChannel", "NumOfComments", "NumOfSubscriber"];
 var selectedNumbergroup = "NumOfTotalVideoViewCount";
+var subtitleDic = {
+  "NumOfTotalVideoViewCount": "The percentage of the aggregated number of viewers for all channels within a  category per country",
+  "NumOfViewsInChannel": "The total of all the views for all the channels per category as a percentage of the total views for all channels in all the categories in that country",
+  "NumOfVideosInChannel": "Represents the number of videos in each channel as a percentage of all videos for all channels per country",
+  "NumOfComments": "Percentage of the aggregate comments made on all channels within a category per country",
+  "NumOfSubscriber": "Total number of subscriptions for all channels within a category per country"
+}
 var numberFormat = d3.format(",.3");
 var numberFormat2 = d3.format(",.3s");
 
@@ -183,6 +190,9 @@ function setSelectedCategory(para) {
 // When choosing a different dataset to view, recalculate the total number for each category,
 // and redraw the rects and add transition
 function numbergroupChanged(ng) {
+
+  // Change subtitle
+  $("#viz-container h2").text(subtitleDic[ng]);
 
   // Needs to recalculate categoryTotal
   data.forEach(function(d, i) {
