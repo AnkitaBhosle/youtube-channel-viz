@@ -90,15 +90,6 @@ legendGroup.append("text")
 svg.append("text")
   .attr({
     "x":400,
-    "y":height+55,
-    "font-size": 12,
-    "fill":#888
-  })
-  .text("Source: YouTube API v2.0");
-
-svg.append("text")
-  .attr({
-    "x":400,
     "y":height+60,
     "font-size": 12
   })
