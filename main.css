@@ -68,19 +68,13 @@ div#channel-container {
 	text-align: center;
 }
 
-/*@media (max-width: 1340px) {
-	div#channel-container {
-		width: 70%;
-	}
-}
-*/
 div#channel-inner-container {
 	width: 98%;
 	margin: 0 auto;
 }
 div#channel-inner-container .thumbnail {
 	display: inline-block;
-	height: 270px;
+	/*height: 270px;*/
 	margin: 5px;
 }
 div#channel-inner-container .thumbnail:hover {

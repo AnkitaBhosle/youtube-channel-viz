@@ -165,7 +165,7 @@ var rect = country.selectAll("rect")
         .style("opacity", 0);
     })
     .on("click", function(d,i) {
-      $("div#channel-container").css("height", "280px");
+      // $("div#channel-container").css("height", "280px");
       $("#channel-inner-container").empty();
       for (var c=0; c<d.channels.length; c++) {
         $("#channel-inner-container").append('<div class="thumbnail"><iframe scrolling="no" marginheight="0" frameborder="0" width="150" src="https://ytchannelembed.com/gallery.php?vids=1&amp;user='+d.channels[c]+'&amp;row=1&amp;width=150&amp;hd=1&amp;margin_right=15&amp;desc=100&amp;desc_color=9E9E9E&amp;title=30&amp;title_color=000000&amp;views=1&amp;likes=1&amp;dislikes=1&amp;fav=1&amp;playlist=" style="height: 339px;"></iframe></div>');
