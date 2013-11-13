@@ -2,7 +2,7 @@
 // Set svg size and margin
 var margin = {top: 20, right: 80, bottom: 80, left: 80},
     width = 960 - margin.left - margin.right,
-    height = 515 - margin.top - margin.bottom;
+    height = 550 - margin.top - margin.bottom;
 
 
 // Initial variables for storing categories
