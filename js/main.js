@@ -91,6 +91,15 @@ svg.append("text")
   .attr({
     "x":400,
     "y":height+60,
+    "font-size": 12,
+    "fill":#888
+  })
+  .text("Source: YouTube API v2.0")
+
+svg.append("text")
+  .attr({
+    "x":400,
+    "y":height+60,
     "font-size": 12
   })
   .text("This is a visualization of the Top 8 channels on YouTube in each category per country.")
