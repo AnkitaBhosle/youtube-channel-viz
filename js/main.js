@@ -87,20 +87,20 @@ legendGroup.append("text")
   .text("country");
 
 //
-svg.append("text")
-  .attr({
-    "x":400,
-    "y":height+60,
-    "font-size": 12
-  })
-  .text("This is a visualization of the Top 8 channels on YouTube in each category per country.");
-svg.append("text")
-  .attr({
-    "x":271,
-    "y":height+75,
-    "font-size": 12,
-  })
-  .text("\"All channels\" refers to only the pool of channels aggregated from the top 8 channels per category per country.");
+// svg.append("text")
+//   .attr({
+//     "x":400,
+//     "y":height+60,
+//     "font-size": 12
+//   })
+//   .text("This is a visualization of the Top 8 channels on YouTube in each category per country.");
+// svg.append("text")
+//   .attr({
+//     "x":271,
+//     "y":height+75,
+//     "font-size": 12,
+//   })
+//   .text("\"All channels\" refers to only the pool of channels aggregated from the top 8 channels per category per country.");
 
 // Add category rect for each country
 var country = svg.selectAll(".country")
