@@ -279,3 +279,5 @@ function categoryChanged(ng) {
     .attr("height", function(d) { return y(d.y0) - y(d.y1); });
 }
 
+// Main landing page
+
