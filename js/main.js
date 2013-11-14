@@ -12,11 +12,11 @@ var categoryTotal = [];
 var originalNumbergroup = ["NumOfTotalVideoViewCount", "NumOfViewsInChannel", "NumOfVideosInChannel", "NumOfComments", "NumOfSubscriber"];
 var selectedNumbergroup = "NumOfTotalVideoViewCount";
 var subtitleDic = {
-  "NumOfTotalVideoViewCount": "The percentage of the aggregated number of viewers for all channels within a  category per country",
-  "NumOfViewsInChannel": "The total of all the views for all the channels per category as a percentage of the total views for all channels in all the categories in that country",
-  "NumOfVideosInChannel": "Represents the number of videos in each channel as a percentage of all videos for all channels per country",
-  "NumOfComments": "Percentage of the aggregate comments made on all channels within a category per country",
-  "NumOfSubscriber": "Total number of subscriptions for all channels within a category per country"
+  "NumOfTotalVideoViewCount": "Total number of views for all videos in Top-8 channel (% in Country)",
+  "NumOfViewsInChannel": "Total number of times that the Top-8 channel's channel pages have been viewed (% in Country)",
+  "NumOfVideosInChannel": "Total number of videos uploaded to Top-8 channel (% in Country)",
+  "NumOfComments": "Total number of comments that user submitted on Top-8 channels (% in Country)",
+  "NumOfSubscriber": "Total number of users who have subscribed to Top-8 channels (% in Country)"
 }
 var numberFormat = d3.format(",.3");
 var numberFormat2 = d3.format(",.3s");

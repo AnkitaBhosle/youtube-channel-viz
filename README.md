@@ -1,40 +1,30 @@
-youtube-channel-viz
+ChannelYsis
 ===================
 
-youtube channel visualization 
+Visualization of top-8 channels data in Youtube's 6 user types. Comparing the  
+percentage distribution in 10 countries.  
 
 
-JSON File Example and Descriptions:
-============
- 
- [  
- 
- 	{  
-    	"Country":"US",	//Country Code  (Upper case) 
-    	"Category": {  
-        	"Name": "Comedians"  //Category name   
-    		"NumOfViewsInChannel":31492, //Aggregate count   
-    		"NumOfVideosInChannel":84,	//Aggregate count   
-    		"NumOfComments":59,	//Aggregate count   
-    		"NumOfSubscriber":691,	//Aggregate count   
-    		"NumOfTotalVideoViewCount":7923771	//Aggregate count   
-    		"Channels": [   //Channel ID List   
-    			"UC1_Hjfq-pKsSbFxsWiFdUqA",  
-    			"UC-27_Szq7BtHDoC0R2U0zxA",   
-    			"UC-716wgP94vhil91RVJwaIQ",   
-    			"UC-lHJZR3Gqxm24_Vd_AJ5Yw",   
-    			"UC0v-tlzsn0QZwJnkiaUSJVQ",   
-    			"UC3bO1qGcFovPqFEa-mg4EyA",   
-    			"UCCHcEUksSVKsRDH86j77Ntg"  
-    		]  
-    	 },
-    	// other six categories       		
-    },  
-    // other nine countries   
-]  
+Team members and roles
+===================
+Aisha: Youtube API and Web Framework  
+Ankita: Documentary  
+Derek: Youtube API and Data Organizing  
+Kate: Web Framework and D3  
+
+
+Technology Use
+===================
+D3, Youtube API v2
+
+
+Link to Demo Version
+===================
+http://people.ischool.berkeley.edu/~katehsiao/iolab-youtube/youtube-channel-viz/viz.html  
+
   
 
-Country code:
+Country List:
 ============
 AR - Argentina <br>
 BE - Belgium <br>
@@ -48,7 +38,7 @@ US - USA <br>
 ZA - SouthAfrica  
 
 
-Category list:
+Category List:
 =============
 Comedians <br>
 Directors <br>
