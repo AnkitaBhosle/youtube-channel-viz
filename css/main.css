@@ -176,15 +176,12 @@ li#Comedians span.bullet.selected {
 	background-color: #98abc5;
 }
 li#Directors span.bullet.selected {
-	background-color: #8a89a6;
-}
-li#Gurus span.bullet.selected {
 	background-color: #7b6888;
 }
-li#Musicians span.bullet.selected {
+li#Gurus span.bullet.selected {
 	background-color: #6b486b;
 }
-li#Partners span.bullet.selected {
+li#Musicians span.bullet.selected {
 	background-color: #a05d56;
 }
 li#Reporters span.bullet.selected {
